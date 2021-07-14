@@ -1,0 +1,265 @@
+{
+  "intents": [
+    {
+      "intent": "Arm",
+      "examples": [
+        {
+          "text": "arm"
+        },
+        {
+          "text": "Industrials Robot Arm"
+        },
+        {
+          "text": "robot arm"
+        }
+      ],
+      "description": ""
+    },
+    {
+      "intent": "Base",
+      "examples": [
+        {
+          "text": "base"
+        },
+        {
+          "text": "Mobile robot base"
+        },
+        {
+          "text": "robot base"
+        }
+      ],
+      "description": ""
+    },
+    {
+      "intent": "Information",
+      "examples": [
+        {
+          "text": "I need information about the control panel"
+        },
+        {
+          "text": "I need some information"
+        },
+        {
+          "text": "I need some information about the website"
+        },
+        {
+          "text": "information about the control panel"
+        },
+        {
+          "text": "Website information"
+        }
+      ],
+      "description": ""
+    },
+    {
+      "intent": "Thanks",
+      "examples": [
+        {
+          "text": "Ok, thanks"
+        },
+        {
+          "text": "Thanks"
+        },
+        {
+          "text": "Thank you"
+        }
+      ],
+      "description": ""
+    },
+    {
+      "intent": "Welcome",
+      "examples": [
+        {
+          "text": "Hello"
+        },
+        {
+          "text": "Hi"
+        },
+        {
+          "text": "hii"
+        }
+      ],
+      "description": ""
+    }
+  ],
+  "entities": [],
+  "metadata": {
+    "api_version": {
+      "major_version": "v2",
+      "minor_version": "2018-11-08"
+    }
+  },
+  "dialog_nodes": [
+    {
+      "type": "standard",
+      "title": "Anything else",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "I didn't understand. You can try rephrasing."
+              },
+              {
+                "text": "Can you reword your statement? I'm not understanding."
+              },
+              {
+                "text": "I didn't get your meaning."
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "conditions": "anything_else",
+      "dialog_node": "Anything else",
+      "previous_sibling": "node_1_1626300738104",
+      "disambiguation_opt_out": true
+    },
+    {
+      "type": "standard",
+      "title": "Thanks",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Your welcome."
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "conditions": "#Thanks",
+      "dialog_node": "node_1_1626300738104",
+      "previous_sibling": "node_3_1626300522742"
+    },
+    {
+      "type": "standard",
+      "title": "Arm",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "The Industrial Robot Arm have 6 sliders for each motor. You will set the angle for each motor and save the data, after that run the robot arm "
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "conditions": "#Arm",
+      "dialog_node": "node_3_1626298130487",
+      "previous_sibling": "node_8_1626297127978"
+    },
+    {
+      "type": "standard",
+      "title": "Welcome To Fencing Robot",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Welcome To Fencing Robot Website "
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "conditions": "welcome",
+      "dialog_node": "node_3_1626300074392"
+    },
+    {
+      "type": "standard",
+      "title": "Base",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "The Mobile robot base control the direction of the base and make it moving or stopping depending on the interface of the control panel "
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "conditions": "#Base",
+      "dialog_node": "node_3_1626300522742",
+      "previous_sibling": "node_3_1626298130487"
+    },
+    {
+      "type": "standard",
+      "title": "Hello",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Hello, How Can I Help You?"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "conditions": "#Welcome",
+      "dialog_node": "node_6_1626295507112",
+      "previous_sibling": "node_3_1626300074392"
+    },
+    {
+      "type": "standard",
+      "title": "Info",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Fencing Robot Control Panel lets you control the robot by the robot arm or robot base to win the game. \nWhich one do you want to control?\nIndustrial Robot Arm or  Mobile robot base"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "conditions": "#Information",
+      "dialog_node": "node_8_1626297127978",
+      "previous_sibling": "node_6_1626295507112"
+    }
+  ],
+  "counterexamples": [],
+  "system_settings": {
+    "off_topic": {
+      "enabled": true
+    },
+    "disambiguation": {
+      "prompt": "Did you mean:",
+      "enabled": true,
+      "randomize": true,
+      "max_suggestions": 5,
+      "suggestion_text_policy": "title",
+      "none_of_the_above_prompt": "None of the above"
+    },
+    "human_agent_assist": {
+      "prompt": "Did you mean:"
+    },
+    "intent_classification": {
+      "training_backend_version": "v2"
+    },
+    "spelling_auto_correct": true
+  },
+  "learning_opt_out": false,
+  "name": "Fencing robot",
+  "language": "en",
+  "description": ""
+}
